@@ -84,3 +84,64 @@
   min-height: 3em;
   color: #333;
 }
+.random-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.random-buttons button,
+.result-buttons button {
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #fff;
+  cursor: pointer;
+}
+
+.display-items {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.result-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.menu {
+  font-size: 1.6rem;
+  min-height: 2em;
+  color: #333;
+}
+.display-items {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.item button {
+  font-size: 0.9rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  border: 1px solid #333;
+  cursor: pointer;
+}
