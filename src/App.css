@@ -1,147 +1,199 @@
+/* ストップボタン用クラス 
+slot-frameと同じ大きさにして透過させることで上から押すようにしてみる*/
+.slot-stop-btn {
+  position: absolute;
+  bottom: 0 ;
+  border-radius: 8px;
+  border: 1.5px solid #ffb889;
+  background: #fffbe6;
+  color: #d35400;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #ffecd2;
+  opacity: 1;/*透明にさせるために０にするけど見えるように後で変更する*/
+  width: 6em;/* スロット枠と同じ大きさ */
+  height: 4em;
+  margin: 0 0.7em;
+}
+
+/* スロット枠を大きく・余裕を持たせる */
+.slot-frame {
+  width: 10em;
+  height: 4em;
+  border: 2.5px solid #d35400;
+  border-radius: 16px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 3em;
+  transition: background 0.2s;
+  position: relative;
+  margin: 0 0.7em;
+}
+.slot-frame.spinning {
+  background: #ffe5c2;
+  box-shadow: 0 0 18px #ffb347;
+}
+
+.result-area {
+  margin: 2.5em auto 2em auto;
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #d35400;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 4px #fff, 0 0 8px #ffb347;
+  min-width: 1em;
+  min-height: 0.5em;
+  padding: 0.7em 0;
+  text-align: center;
+  border-radius: 12px;
+  background: #ffffff;
+  gap: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .result-area {
+    gap: 0.5em;
+    padding: 0.2em 0;
+  }
+  .slot-frame {
+    width: 4em;
+    height: 1.7em;
+    font-size: 1.1em;
+    border-radius: 8px;
+    margin: 0 0.2em;
+  }
+  .slot-stop-btn {
+    font-size: 1.1em;
+    border-radius: 8px;
+    margin: 0 0.2em;
+    opacity: 0;
+  }
+  .slot-all-btn {
+    font-size: 1em;
+    padding: 0.3em 0.7em;
+  }
+}
+body, #root, .container {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  max-width: none;
+  margin: 0;
+  padding: 0;
   text-align: center;
   height: 100vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
 
 /*以下はアプリの位置などに追加したもの*/
 .container {
-  width: 90vw;
-  max-width: 600px;
-  height: 400px;
-  margin: 3rem auto;
-  border: 3px solid #333;
-  border-radius: 12px;
-  background: #fafafa;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  position: relative; /*動かす基準*/
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  max-width: 100vw;
+  max-height: 100vh;
+  background: #ffffff;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
-.content{
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
+
 .title {
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 1rem;
-  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+  margin-top: 0.2rem;
   color: orange;
 }
-.button{
-  font-size: 1.8rem;
-  padding: 1rem 2rem;
-  margin-bottom: 2rem;
+
+.button {
+  position: absolute;
+  bottom: -2.2em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8em;
+  padding: 0.2em 0.8em;
+  border-radius: 6px;
+  border: 1px solid #d35400;
+  background: #fffbe6;
+  color: #d35400;
   cursor: pointer;
 }
-.menu {
-  font-size: 2rem;
-/*高さの固定　スマホで画面が動かないようにする*/
-  min-height: 3em;
-  color: #333;
-}
-.random-buttons {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-.random-buttons button,
-.result-buttons button {
-  font-size: 1rem;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background: #fff;
-  cursor: pointer;
-}
-
-.display-items {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
 .result-buttons {
   display: flex;
   gap: 1rem;
   justify-content: center;
   margin-bottom: 1rem;
+  color: #000000;
 }
 
-.menu {
-  font-size: 1.6rem;
-  min-height: 2em;
-  color: #333;
-}
-.display-items {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
+.result-area {
+  margin: 0 auto 0 auto;
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: #d35400;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 4px #fff, 0 0 8px #ffb347;
+  min-width: 1em;
+  min-height: 0.5em;
+  padding: 0;
+  text-align: center;
+  border-radius: 6px;
+  background: #ffffff;
+  gap: 0.5em !important;
 }
 
-.item {
+.slot-frame {
+  width: 6em !important;
+  height: 4em !important;
+  border: 2px solid #d35400;
+  border-radius: 8px;
+  background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.3em !important;
+  transition: background 0.2s;
+  position: relative;
+}
+.slot-frame.spinning {
+  background: #ffe5c2;
+  box-shadow: 0 0 10px #ffb347;
 }
 
-.item button {
-  font-size: 0.9rem;
-  padding: 0.3rem 0.8rem;
-  border-radius: 6px;
-  background-color: #f0f0f0;
-  border: 1px solid #333;
-  cursor: pointer;
+@media (max-width: 600px) {
+  .result-area {
+    gap: 0.3em !important;
+  }
+  .slot-frame {
+    width: 2.7em !important;
+    height: 1.1em !important;
+    font-size: 0.85em !important;
+  }
+  .slot-all-btn {
+    font-size: 0.9em !important;
+    padding: 0.3em 0.7em !important;
+  }
 }
+/* スロットのストップボタンを透過させて、大きさを奥のボタンと揃える
+かつ、ストップボタンの位置を中央にする
+後回し（スロットを回すボタンをレバーみたいなアニメーションでやってみたい）
+リセットのボタンをもう少し淡い感じで離したい*/
